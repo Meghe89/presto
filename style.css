@@ -9,6 +9,7 @@
     --main: #3f33ff;
     --black: #202020;
     --white: #f9f2fd;
+    --gray: #6f7581;
 }
 
 .tc-main{
@@ -20,6 +21,9 @@
 .tc-white{
     color: var(--white);
 }
+.tc-gray{
+    color: var(--gray);
+}
 
 .bg-main{
     color: var(--main);
@@ -29,6 +33,9 @@
 }
 .bg-white{
     color: var(--white);
+}
+.bg-gray{
+    color: var(--gray);
 }
 body{
     background-color:var(--black) ;
@@ -72,3 +79,9 @@ body{
     border-color: transparent;
 }
 
+/* header */
+.masthead{
+    height: 100vh;
+    min-height: 500px;
+    margin-top: 25px;
+}
