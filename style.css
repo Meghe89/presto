@@ -1,0 +1,30 @@
+/* globali */
+*{
+    font-family: 'Bonheur Royale', cursive;
+}
+
+:root{
+    --main: #3f33ff;
+    --black: #202020;
+    --white: #f3e1ff;
+}
+
+.tc-main{
+    color: var(--main);
+}
+.tc-black{
+    color: var(--black);
+}
+.tc-white{
+    color: var(--white);
+}
+
+.bg-main{
+    color: var(--main);
+}
+.bg-black{
+    color: var(--black);
+}
+.bg-white{
+    color: var(--white);
+}
