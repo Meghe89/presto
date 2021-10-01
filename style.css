@@ -1,12 +1,14 @@
 /* globali */
 *{
     font-family: 'Bonheur Royale', cursive;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 :root{
     --main: #3f33ff;
     --black: #202020;
-    --white: #f3e1ff;
+    --white: #f9f2fd;
 }
 
 .tc-main{
@@ -27,4 +29,38 @@
 }
 .bg-white{
     color: var(--white);
+}
+body{
+    background-color:var(--black) ;
+}
+
+/*navbar  */
+.navbar-presto{
+    background-color: transparent;
+}
+.navbar-presto .nav-link{
+    color: var(--white)!important;
+    transition: all 0.5s;
+    border-bottom: 2px solid transparent;
+    padding: 0;
+}
+
+.navbar-presto .nav-link:hover{
+    color: var(--white);
+    font-weight: 600;
+    transform: scale(1.1);
+    border-bottom: 2px solid var(--main);
+}
+.navbar-presto.bg-white .nav-link:hover{
+    color: var(--black);
+    font-weight: 600;
+    transform: scale(1.1);
+    border-bottom: 2px solid var(--main);
+}
+.navbar-presto.bg-white .nav-link{
+    color: var(--black)!important;
+    
+}
+.navbar-presto .navbar-brand{
+    color: var(--main);
 }
