@@ -1,5 +1,6 @@
 /* collegamenti */
 const navbar = document.querySelector('#nav-presto')
+const toggler = document.querySelector('.navbar-toggler')
 
 /* event */
 document.addEventListener('scroll', ()=>{
@@ -9,4 +10,8 @@ document.addEventListener('scroll', ()=>{
     } else{
         navbar.classList.remove('bg-white')
     }
+})
+
+toggler.addEventListener('click', ()=>{
+    toggler.classList.toggle('fa-rotate-90')
 })

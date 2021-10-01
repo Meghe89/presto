@@ -64,3 +64,11 @@ body{
 .navbar-presto .navbar-brand{
     color: var(--main);
 }
+.navbar-presto .navbar-toggler{
+    transition: all 0.5s;
+}
+.navbar-presto .navbar-toggler:focus{
+    box-shadow: none;
+    border-color: transparent;
+}
+
