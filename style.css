@@ -33,16 +33,16 @@
 
 
 .bg-main{
-    color: var(--main);
+    background-color: var(--main);
 }
 .bg-black{
-    color: var(--black);
+    background-color: var(--black);
 }
 .bg-white{
-    color: var(--white);
+    background-color: var(--white);
 }
 .bg-gray{
-    color: var(--gray);
+    background-color: var(--gray);
 }
 body{
     background-color:var(--black) ;

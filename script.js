@@ -3,8 +3,6 @@ const navbar = document.querySelector('#nav-presto')
 const toggler = document.querySelector('.navbar-toggler')
 const categoriesWrapper = document.querySelector('#categories-wrapper')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
-let favouriteBtns = document.querySelectorAll('.fa-heart')
-console.log(favouriteBtns);
 
 
 /* event */
@@ -42,6 +40,10 @@ function populateCategories() {
     ]
     
     /* categories */
+
+    if (!categoriesWrapper) {
+        return
+    }
     categories.forEach(category=>{
         
         let card = document.createElement('div')
@@ -104,6 +106,9 @@ function populateLastAds() {
         }
     ]
     /* last ads */
+    if (!swiperWrapper) {
+        return
+    }
     lastAds.forEach(ad=>{
         let slide = document.createElement('div')
         slide.classList.add('swiper-slide', 'text-center')
@@ -159,10 +164,13 @@ function generateCarousel() {
 }
 
 function generateFavouriteButtons() {
+    let favouriteBtns = document.querySelectorAll('.fa-heart')
+
+
     
     /* favourite btns */
     favouriteBtns.forEach(btn => {
-        console.log(btn);
+        
         btn.addEventListener('click', function(){
             
             btn.classList.toggle('fas')
@@ -171,7 +179,7 @@ function generateFavouriteButtons() {
             
         })
     })
-    console.log(favouriteBtns);
+    
 }
 
 
