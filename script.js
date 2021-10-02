@@ -2,7 +2,8 @@
 const navbar = document.querySelector('#nav-presto')
 const toggler = document.querySelector('.navbar-toggler')
 const categoriesWrapper = document.querySelector('#categories-wrapper')
-
+let favouriteBtns = document.querySelectorAll('.favourite')
+console.log(favouriteBtns);
 
 
 /* array categorie */
@@ -21,7 +22,7 @@ let categories = [
 /* creazione elementi  */
 
 categories.forEach(category=>{
-    console.log(category);
+    
     let card = document.createElement('div')
     card.classList.add('col-12', 'col-md-6', 'col-lg-3','d-flex', 'justify-content-center')
     card.innerHTML = 
@@ -50,3 +51,15 @@ toggler.addEventListener('click', ()=>{
     toggler.classList.toggle('fa-rotate-90')
 })
 
+
+/* favourite btns */
+favouriteBtns.forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        btn.classList.toggle('fas')
+        btn.classList.toggle('far')
+        btn.classList.toggle('tc-main')
+    })
+})
+
+
+/* carousel */
