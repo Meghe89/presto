@@ -25,14 +25,22 @@ fetch('./annunci.json').then(data => data.json())
         const adsWrapper = document.querySelector('#ads-wrapper')
 
         adsWrapper.innerHTML = ''
-        ads.forEach(ad => {
+        ads.forEach((ad , i) => {
             let card = document.createElement('div')
             
             card.classList.add('col-12', 'col-sm-6', 'col-lg-4')
             
             card.innerHTML = 
             `
-            <div class="card-product mb-3">
+            <div class="card-product mb-3"
+                data-aos="flip-right" //animazione da effettuare
+                data-aos-offset="100"
+                data-aos-delay="30"
+                data-aos-duration="1000" //durata
+                data-aos-easing="ease-in-out" //velocità animazione
+                data-aos-once="true" //ripetuta o meno
+                data-aos-anchor-placement="top-center"
+            >
             <img class="img-fluid" src="https://picsum.photos/640/360" alt="">
             <div class="card-product-body tc-white">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
@@ -119,9 +127,24 @@ fetch('./annunci.json').then(data => data.json())
        })
    }
 
+   function filterByCategorySelect() {
+       let input = document.querySelector('#category-select')
+
+       input.addEventListener('change', ()=>{
+        if (input.value === 'all') {
+            populateAds(ads)
+        } else {
+            let filtered = ads.filter(ad => ad.category === input.value)
+            
+            populateAds(filtered) 
+        }
+       })
+   }
+
    populateCategoryFilterRadio()
    populateCategoryFilterSelect()
    filterByCategoryRadio()
+   filterByCategorySelect()
     populateAds(ads)
     
 })
