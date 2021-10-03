@@ -21,8 +21,10 @@ fetch('./annunci.json').then(data => data.json())
     }
 
     
-    function populateAds() {
+    function populateAds(ads) {
         const adsWrapper = document.querySelector('#ads-wrapper')
+
+        adsWrapper.innerHTML = ''
         ads.forEach(ad => {
             let card = document.createElement('div')
             
@@ -45,8 +47,83 @@ fetch('./annunci.json').then(data => data.json())
             `
             adsWrapper.appendChild(card)
         })
+        generateFavouriteButtons()
     }
 
-    populateAds()
-    generateFavouriteButtons()
+    /* per prendere le categorie possiamo utilizzare 2 metodi */
+    //Primo: map degli elementi, creando un set per eliminare le copie, e riportandolo ad Array
+    /* let categories = Array.from(new Set(ads.map(ad=> ad.category))); */
+
+    
+
+    /* Secondo: foreach con controllo */
+
+    /* let categories = []
+
+    ads.map(ad=>ad.category).forEach(category => {
+        if (!categories.includes(category)) {
+            categories.push(category)            
+        } 
+    }); */
+
+    
+    
+   function populateCategoryFilterRadio() {
+
+       let categories = Array.from(new Set(ads.map(ad=> ad.category)));
+       let wrapperRadio = document.querySelector('#wrapper-category-radio')
+
+    categories.forEach((category, i) => {
+        let input = document.createElement('div')
+        input.classList.add('form-check')
+        input.innerHTML = 
+        `
+        <input class="form-check-input filter-category" type="radio" name="category-filter" id="flexRadioDefault${i}" data-filter='${category}'>
+        <label class="form-check-label" for="flexRadioDefault${i}">
+           ${category}
+        </label>
+        `
+        wrapperRadio.appendChild(input)
+    })    
+   }
+
+   function populateCategoryFilterSelect() {
+    let categories = Array.from(new Set(ads.map(ad=> ad.category)));
+    let wrapperSelect = document.querySelector('#category-select')
+
+    categories.forEach(category => {
+        let option = document.createElement('option')
+        option.innerHTML = `${category}`
+        option.value = `${category}`
+        wrapperSelect.appendChild(option)
+    });
+    {/* <option value="1">One</option> */}
+   }
+
+   function filterByCategoryRadio() {
+       let radios = document.querySelectorAll('.filter-category')
+       radios.forEach(radio =>{
+           radio.addEventListener('input',()=>{
+               let selected = radio.getAttribute('data-filter')
+
+               if (selected === 'all') {
+                   populateAds(ads)
+               } else {
+                   let filtered = ads.filter(ad => ad.category === selected)
+                   
+                   populateAds(filtered) 
+               }
+               
+
+           })
+       })
+   }
+
+   populateCategoryFilterRadio()
+   populateCategoryFilterSelect()
+   filterByCategoryRadio()
+    populateAds(ads)
+    
 })
+
+

@@ -79,7 +79,20 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="row mb-3">
+                  <select id="category-select" class="form-select" aria-label="Default select example">
+                    <option selected>Tutte le categorie</option>
+                    
+                  </select>
+                </div>
+                <div class="row" id="wrapper-category-radio">
+                  <div class="form-check">
+                    <input class="form-check-input filter-category" type="radio" name="category-filter" id="flexRadioDefault" data-filter='all' checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Tutte le categorie
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -141,7 +154,7 @@
     
     <!-- custom js -->
     <script src="./ads.js"></script>
-    
+
      <script src="./script.js"></script>
   </body>
   </html>
