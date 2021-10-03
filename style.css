@@ -142,11 +142,14 @@ body{
     padding: 20px 30px;
     max-width: 400px;
     border:  3px solid var(--main);
+    
+}
+.card-product, .card-category{
     -webkit-box-shadow: 5px 5px 20px 0px #7e7e7e;
     box-shadow: 5px 5px 20px 0px #7e7e7e;
     transition: all 0.5s;
 }
-.card-category:hover{
+.card-category:hover, .card-product:hover{
     -webkit-box-shadow: 0px 0px 10px 0px #7e7e7e; 
     box-shadow: 0px 0px 10px 0px #7e7e7e;
 
@@ -171,7 +174,11 @@ body{
 }
 
 
-
+.text-long{
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; /* give the beautiful '...' effect */
+}
 
 
 /* media-queries */
@@ -188,4 +195,4 @@ body{
     .mt-responsive-custom{
         margin-top: 50px;
     }
-  }
+}
