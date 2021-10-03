@@ -181,4 +181,7 @@ body{
     .rt-size{
         font-size: 25px!important;
     }
+    .mt-responsive-custom{
+        margin-top: 50px;
+    }
   }
