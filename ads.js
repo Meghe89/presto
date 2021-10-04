@@ -8,8 +8,25 @@ fetch('./annunci.json').then(data => data.json())
         
         /* favourite btns */
         favouriteBtns.forEach(btn => {
-            
-            btn.addEventListener('click', function(){
+            btn.addEventListener('click', ()=>{
+                
+                let id = btn.getAttribute('ad-id')
+                
+                let storage = sessionStorage.getItem('favourite').split(',');
+                
+                if (storage.includes(id)) {
+                    storage = storage.filter(el => el != id)
+                } else{
+                    storage.push(id)
+                }
+                
+                
+                sessionStorage.setItem('favourite', storage)
+                
+                console.log(sessionStorage.getItem('favourite').split(','));
+                
+                
+                
                 
                 btn.classList.toggle('fas')
                 btn.classList.toggle('far')
@@ -23,6 +40,38 @@ fetch('./annunci.json').then(data => data.json())
     
     function populateAds(ads) {
         const adsWrapper = document.querySelector('#ads-wrapper')
+        
+        function truncateTitle(title) {
+            
+            
+            if (title.length < 18) {
+                return title
+            } else{
+                return title.substr(0 ,17) + '...'
+            }
+            /* let splitted = title.split(' ')
+            if(splitted.length > 1){
+                return `${splitted[0]}...`
+            }else{
+                return splitted[0]
+            } */
+        }
+        
+        function setFavourite(id) {
+            if (sessionStorage.getItem('favourite')) {
+                let storage = sessionStorage.getItem('favourite').split(',');
+                
+                if (storage.includes(id.toString())) {
+                    return `fas tc-main`
+                } else{
+                    return `far`
+                }
+            }else{
+                sessionStorage.setItem('favourite', '')
+                return `far`
+            }
+                
+            }
         
         adsWrapper.innerHTML = ''
         ads.forEach((ad , i) => {
@@ -44,9 +93,9 @@ fetch('./annunci.json').then(data => data.json())
             <img class="img-fluid" src="https://picsum.photos/640/360" alt="">
             <div class="card-product-body tc-white">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <h3 class="mb-0 rt-size text-long
-            ">${ad.name} </h3>
-            <i  class="far fa-heart favourite"></i>
+            <h3 class="mb-0 rt-size text-long data-bs-toggle="tooltip" data-bs-placement="top" title="${ad.name}"
+            ">${truncateTitle(ad.name)} </h3>
+            <i ad-id="${ad.id}" class="${setFavourite(ad.id)} fa-heart "></i>
             <a class="tc-sec w-100 d-flex justify-content-start" href="">${ad.category}</a>
             </div>                    
             <p class="fs-3 pt-3 text-end rt-size">${ad.price}€</p>                    
@@ -146,7 +195,7 @@ fetch('./annunci.json').then(data => data.json())
         let input = document.querySelector('#search-input')
         let lastLenght = input.value.length
         input.addEventListener('keydown', (e)=>{
-
+            
             if (e.code == 'Enter') {
                 let filtered = ads.filter(ad =>ad.name.toLowerCase().includes(input.value.toLowerCase()))
                 
@@ -156,16 +205,16 @@ fetch('./annunci.json').then(data => data.json())
             
         })
     }
-
+    
     function populatePriceFilter() {
         let minInput = document.querySelector('#min-price-filter')
         let minLabel = document.querySelector('#min-price-label')
-
+        
         let maxInput = document.querySelector('#max-price-filter')
         let maxLabel = document.querySelector('#max-price-label')
-
+        
         let max = ads.map(ad=>ad.price).sort((a,b) => b-a)[0]
-
+        
         
         //inizializzo il massimo e l'attributo max
         maxLabel.innerHTML = `${Math.ceil(max)} €`
@@ -180,7 +229,7 @@ fetch('./annunci.json').then(data => data.json())
             }            
             minLabel.innerHTML = `${minInput.value} €`
         })
-
+        
         maxInput.addEventListener('input', (e)=>{
             if ((Number(maxInput.value) - 200) <= Number(minInput.value)) {
                 e.preventDefault()
@@ -189,11 +238,11 @@ fetch('./annunci.json').then(data => data.json())
             maxLabel.innerHTML = `${maxInput.value} €`
         })
     }
-  
+    
     function filterByPrice() {
         let minInput = document.querySelector('#min-price-filter') 
         let maxInput = document.querySelector('#max-price-filter')
-
+        
         function filterAds() {
             let filtered = ads.filter(ad => Number(ad.price) > Number(minInput.value) && Number(ad.price) <= Number(maxInput.value)+1).sort((a,b)=>b-a)
             populateAds(filtered)
@@ -201,24 +250,56 @@ fetch('./annunci.json').then(data => data.json())
         
         
         minInput.addEventListener('change', filterAds)
-
-
+        
+        
         maxInput.addEventListener('change',filterAds)
         
     }
-
-
-
-
+    
+    function orderElements() {
+        let priceUp = document.querySelector('.price-up')
+        let priceDown = document.querySelector('.price-down')
+        let wordUp = document.querySelector('.word-up')
+        let wordDown = document.querySelector('.word-down')
+        
+        priceUp.addEventListener('input', ()=>{
+            let sorted = ads.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+            populateAds(sorted)
+            
+            
+        })
+        priceDown.addEventListener('input', ()=>{
+            let sorted = ads.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+            populateAds(sorted)
+            
+            
+        })  
+        wordUp.addEventListener('input', ()=>{
+            let word = ads.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+            populateAds(word)
+            
+            
+        })
+        wordDown.addEventListener('input', ()=>{
+            let word = ads.sort((a, b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
+            populateAds(word)
+            
+            
+        })  
+        
+    }
+    
+    
     populateCategoryFilterRadio()
     populateCategoryFilterSelect()
     populatePriceFilter()
     
+    orderElements()
     filterByCategoryRadio()
     filterByCategorySelect()
     filterBySearch()
     filterByPrice()
-
+    
     populateAds(ads)
 })
 

@@ -15,6 +15,10 @@
   
   <!-- swiper css -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+  <!-- AOS css -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   
   <!-- custom css -->
   <link rel="stylesheet" href="./style.css">
@@ -24,21 +28,20 @@
 <body>
   
   <!-- navbar -->
-  <nav id="nav-presto" class="navbar navbar-expand-lg navbar-dark navbar-presto fixed-top">
+  <nav id="nav-presto" class="navbar navbar-expand-lg  navbar-presto fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold fs-3" href="#"><i class="fab fa-optin-monster fa-2x"></i></a>
+      <a class="navbar-brand fw-bold fs-3" href="./index.html"><i class="fab fa-optin-monster fa-2x"></i></a>
       <button class="navbar-toggler fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-ellipsis-v tc-main"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-4">
-          
-                     
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-4">          
+                    
           <li class="nav-item">
             <a class="nav-link d-inline-block" href="./ads.html">Annunci</a>
           </li>             
           <li class="nav-item">
-            <a class="nav-link d-inline-block" href="./profile.html">Utente</a>
+            <a class="nav-link d-inline-block" href="#">Utente</a>
           </li>             
           <li class="nav-item">
             <a class="nav-link d-inline-block" href="#"><i class="fab fa-facebook"></i></a>
@@ -58,66 +61,8 @@
     </div>
   </nav>
   
-  <!-- header -->
-  <header class="container-fluid ">
-    <div class="container masthead">
-      <div class="row align-items-center h-100">
-        <div class="col-12 col-md-6 tc-gray order-2 order-md-1">
-          <p class="tc-main fw-bold">-main slogan</p>
-          <h2 class="display-2 tc-white fw-bold">Lorem ipsum sit dolor</h2>
-          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat exercitationem expedita odio dolore accusamus quod, consequuntur libero quae qui cumque iste dignissimos officiis architecto, omnis minus ad beatae, quasi numquam.</p>
-        </div>
-        <div class="col-12 col-md-6 order-1 order-md-2">
-          <img class="img-fluid" src="./media/online_shopping.svg" alt="">
-        </div>
-      </div>
-    </div>
-  </header>
   
-  <!-- categorie -->
-  <section class="container category">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h2 class="fw-bold display-5 tc-white position-relative under-line">Esplora le nostre categorie</h2>
-      </div>
-      <div class="col-12 my-5 m-responsive">
-        <div class="row my-5" id="categories-wrapper">
-          
-          <!-- <div class="col-12 col-md-3">
-            <div class="card-category tc-white text-center">
-              <h3 class="fw-bold mb-4 tc-main"> <i class="fab fa-pied-piper-pp"></i>Categoria</h3>
-              <button class="btn-main">Vai alla categoria</button>
-            </div>
-          </div> -->
-          
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- articles -->
-  <section class="container">
-    <div class="row ">
-      <div class="col-12 text-center">
-        <h2 class="fw-bold display-5 tc-white position-relative under-line">Gli ultimi annunci</h2>
-      </div>
-      <div class="row my-5 mx-auto">
-        <div class="col-12">
-          <!-- Slider main container -->
-          <div class="swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-            </div>  
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev d-none d-sm-block "></div>
-            <div class="swiper-button-next d-none d-sm-block"></div>       
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+    
   <!-- footer -->
   <footer class="container-fluid mt-5 py-5 bg-main tc-black">
     <div class="row">
@@ -137,12 +82,19 @@
   <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous"></script>
   
   <!-- swiper js -->
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js">
-  </script> 
-  
-  
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> 
 
-   <!-- custom js -->
-   <script src="./script.js"></script>
-</body>
-</html>
+  <!-- AOL js -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+    
+  <!-- custom js -->
+  <script src="./ads.js"></script>
+
+  <script src="./script.js"></script>
+  </body>
+  </html>
+  

@@ -36,14 +36,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-4">          
-          <li class="nav-item">
-            <a class="nav-link d-inline-block" href="#">Categorie</a>
-          </li>             
+                      
           <li class="nav-item">
             <a class="nav-link d-inline-block" href="">Annunci</a>
           </li>             
           <li class="nav-item">
-            <a class="nav-link d-inline-block" href="#">Utente</a>
+            <a class="nav-link d-inline-block" href="./profile.html">Utente</a>
           </li>             
           <li class="nav-item">
             <a class="nav-link d-inline-block" href="#"><i class="fab fa-facebook"></i></a>
@@ -130,6 +128,41 @@
                   <input type="text" id="search-input" class="form-control" placeholder="Cerca..." >
                   
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item bg-gray">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Ordina 
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input price-up" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Prezzo Crescente
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input price-down" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Prezzo Decrescente
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input word-up" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    A - Z
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input word-down" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Z - A
+                  </label>
+                </div> 
               </div>
             </div>
           </div>
