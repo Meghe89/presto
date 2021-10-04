@@ -156,16 +156,70 @@ fetch('./annunci.json').then(data => data.json())
             
         })
     }
-    
-    
-    
+
+    function populatePriceFilter() {
+        let minInput = document.querySelector('#min-price-filter')
+        let minLabel = document.querySelector('#min-price-label')
+
+        let maxInput = document.querySelector('#max-price-filter')
+        let maxLabel = document.querySelector('#max-price-label')
+
+        let max = ads.map(ad=>ad.price).sort((a,b) => b-a)[0]
+
+        
+        //inizializzo il massimo e l'attributo max
+        maxLabel.innerHTML = `${Math.ceil(max)} €`
+        minInput.max = max
+        maxInput.max = max
+        maxInput.value = max
+        
+        minInput.addEventListener('input', (e)=>{
+            if ((Number(maxInput.value) - 200) <= Number(minInput.value)) {
+                e.preventDefault()
+                minInput.value = Number(maxInput.value) - 200
+            }            
+            minLabel.innerHTML = `${minInput.value} €`
+        })
+
+        maxInput.addEventListener('input', (e)=>{
+            if ((Number(maxInput.value) - 200) <= Number(minInput.value)) {
+                e.preventDefault()
+                maxInput.value = Number(minInput.value) + 200
+            }
+            maxLabel.innerHTML = `${maxInput.value} €`
+        })
+    }
+  
+    function filterByPrice() {
+        let minInput = document.querySelector('#min-price-filter') 
+        let maxInput = document.querySelector('#max-price-filter')
+
+        function filterAds() {
+            let filtered = ads.filter(ad => Number(ad.price) > Number(minInput.value) && Number(ad.price) <= Number(maxInput.value)+1).sort((a,b)=>b-a)
+            populateAds(filtered)
+        }
+        
+        
+        minInput.addEventListener('change', filterAds)
+
+
+        maxInput.addEventListener('change',filterAds)
+        
+    }
+
+
+
+
     populateCategoryFilterRadio()
     populateCategoryFilterSelect()
+    populatePriceFilter()
+    
     filterByCategoryRadio()
     filterByCategorySelect()
     filterBySearch()
+    filterByPrice()
+
     populateAds(ads)
-    
 })
 
 
