@@ -1,42 +1,6 @@
 fetch('./annunci.json').then(data => data.json())
 .then(ads=>{
-    
-    function generateFavouriteButtons() {
-        let favouriteBtns = document.querySelectorAll('.fa-heart')
-        
-        
-        
-        /* favourite btns */
-        favouriteBtns.forEach(btn => {
-            btn.addEventListener('click', ()=>{
-                
-                let id = btn.getAttribute('ad-id')
-                
-                let storage = sessionStorage.getItem('favourite').split(',');
-                
-                if (storage.includes(id)) {
-                    storage = storage.filter(el => el != id)
-                } else{
-                    storage.push(id)
-                }
-                
-                
-                sessionStorage.setItem('favourite', storage)
-                
-                console.log(sessionStorage.getItem('favourite').split(','));
-                
-                
-                
-                
-                btn.classList.toggle('fas')
-                btn.classList.toggle('far')
-                btn.classList.toggle('tc-main')
-                
-            })
-        })
-        
-    }
-    
+ 
     
     function populateAds(ads) {
         const adsWrapper = document.querySelector('#ads-wrapper')

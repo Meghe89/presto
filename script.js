@@ -2,7 +2,7 @@
 const navbar = document.querySelector('#nav-presto')
 const toggler = document.querySelector('.navbar-toggler')
 const categoriesWrapper = document.querySelector('#categories-wrapper')
-const swiperWrapper = document.querySelector('.swiper-wrapper')
+const swiperWrapper = document.querySelector('.swiper-last-ads-wrapper')
 
 
 /* event */
@@ -168,13 +168,30 @@ function generateCarousel() {
 
 function generateFavouriteButtons() {
     let favouriteBtns = document.querySelectorAll('.fa-heart')
-
-
-    
-    /* favourite btns */
-    favouriteBtns.forEach(btn => {
         
-        btn.addEventListener('click', function(){
+        
+        
+        
+    favouriteBtns.forEach(btn => {
+        btn.addEventListener('click', ()=>{
+            
+            let id = btn.getAttribute('ad-id')
+            
+            let storage = sessionStorage.getItem('favourite').split(',');
+            
+            if (storage.includes(id)) {
+                storage = storage.filter(el => el != id)
+            } else{
+                storage.push(id)
+            }
+            
+            
+            sessionStorage.setItem('favourite', storage)
+            
+            console.log(sessionStorage.getItem('favourite').split(','));
+            
+            
+            
             
             btn.classList.toggle('fas')
             btn.classList.toggle('far')
@@ -182,7 +199,6 @@ function generateFavouriteButtons() {
             
         })
     })
-    
 }
 
 
