@@ -271,6 +271,15 @@ section.range-slider input[type=range]::-moz-focus-outer {
 
 /* media-queries */
 @media screen and (max-width: 920px) {
+    .navbar-presto{
+        background-color: var(--white);        
+    }
+    .navbar-presto .nav-link {
+        color: var(--black)!important;
+        transition: all 0.5s;
+        border-bottom: 2px solid transparent;
+        padding: 0;
+    }
     .category{
         margin-top: 100px;        
     }

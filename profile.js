@@ -67,7 +67,7 @@ favouriteBtns.forEach(btn => {
 
 }
 fetch('./annunci.json').then(data => data.json())
-.then( ads =>{
+.then(ads=>{
     let storage = sessionStorage.getItem('favourite').split(',')
     let favourites = ads.filter(ad => storage.includes(ad.id.toString()))
     
@@ -94,7 +94,12 @@ fetch('./annunci.json').then(data => data.json())
         wrapper.appendChild(slide)
     })
     const swiper = new Swiper('.swiper-favourite', {
+        // Optional parameters
         
+        loop: true,
+        
+        
+        // Navigation arrows
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
